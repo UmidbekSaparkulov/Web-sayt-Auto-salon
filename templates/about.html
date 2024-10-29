@@ -5,17 +5,16 @@
         <section class="ftco-section-no-padding bg-light">
             <div class="hero-wrap">
                 <div class="overlay"></div>
-                {% for i in abouts %}
                 <div class="d-flex">
-                    <div class="author-image text img p-md-5" style="background-image: url({{ i.image1.url }});">
+                    <div class="author-image text img p-md-5" style="background-image: url({{ abouts.image1.url }});">
                     </div>
                     <div class="author-info text p-4 p-md-5 mt-5 mb-5">
                         <div class="desc">
-                            <span class="subheading">Nice To Meet You</span>
-                            <h1 class="big-letter">{{ i.full_name }}</h1>
-                            <h1 class="mb-4"><span>My Name is {{ i.full_name }}</span></h1>
-                            <p class="mb-4">{{ i.description }}</p>
-                            <h3 class="signature h1">{{ i.full_name }}</h3>
+                            <span class="subheading">{{ abouts.full_name }}</span>
+                            <h1 class="big-letter">{{ abouts.full_name }}</h1>
+                            <h1 class="mb-4"><span>Bizning kompaniyamiz ma'lumot {{ abouts.full_name }}</span></h1>
+                            <p class="mb-4">{{ abouts.description }}</p>
+                            <h3 class="signature h1">{{ abouts.full_name }}</h3>
                             <ul class="ftco-social mt-3">
                                 <li class="ftco-animate"><a href="{{ i.twitter }}"><span class="icon-twitter"></span></a></li>
                                 <li class="ftco-animate"><a href="{{ i.facebook }}"><span class="icon-facebook"></span></a></li>
@@ -24,7 +23,6 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
             </div>
         </section>
         <section class="ftco-section ftco-counter img" id="section-counter"
@@ -33,38 +31,16 @@
                 <div class="row justify-content-start">
                     <div class="col-md-10">
                         <div class="row">
+                            {% for i in sections %}
                             <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
                                 <div class="block-18">
                                     <div class="text d-flex align-items-center">
-                                        <strong class="number" data-number="120">0</strong>
-                                        <span>Pounds of Equipment</span>
+                                        <strong class="number" data-number="{{ i.number }}">0</strong>
+                                        <span>{{ i.title }}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-                                <div class="block-18">
-                                    <div class="text d-flex align-items-center">
-                                        <strong class="number" data-number="150">0</strong>
-                                        <span>Studio Session</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-                                <div class="block-18">
-                                    <div class="text d-flex align-items-center">
-                                        <strong class="number" data-number="200">0</strong>
-                                        <span>Finished Photosessions</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 d-flex justify-content-center counter-wrap ftco-animate">
-                                <div class="block-18">
-                                    <div class="text d-flex align-items-center">
-                                        <strong class="number" data-number="200">0</strong>
-                                        <span>Happy Clients</span>
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

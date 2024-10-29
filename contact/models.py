@@ -16,7 +16,7 @@ class Contact(models.Model):
 
     full_name = models.CharField(max_length=100)
     email = models.EmailField()
-    phone = models.CharField(max_length=50)
+    phone = models.IntegerField()
     message = models.TextField()
 
     is_published = models.BooleanField(default=False)

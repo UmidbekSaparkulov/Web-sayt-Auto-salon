@@ -30,27 +30,35 @@
 <div id="colorlib-page">
     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
     <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-        {% for i in abouts %}
         <h1 id="colorlib-logo"><a href="{% url 'index' %}"><span class="img"
-                                                            style="background-image: url({{ i.image1.url }});"></span>{{ i.full_name }}</a></h1>
-        {% endfor %}
+                                                            style="background-image: url({{ abouts.image1.url }});"></span>{{ i.full_name }}</a></h1>
+                                                            
         <nav id="colorlib-main-menu" role="navigation">
             <ul>
-                <li class="colorlib-active"><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'collection' %}">Collection</a></li>
-                <li><a href="{% url 'about' %}">About Me</a></li>
-                <li><a href="{% url 'service' %}">My Services</a></li>
-                <li><a href="{% url 'blog' %}">Blog</a></li>
-                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <li class="{% if request.path == '/' %}colorlib-active{% endif %}"><a href="{% url 'index' %}">Home</a></li>
+                <li class="{% if request.path == '/collection/' %}colorlib-active{% endif %}"><a
+                        href="{% url 'collection' %}">
+                        Cars collections</a></li>
+                <li class="{% if request.path == '/about/' %}colorlib-active{% endif %}"><a href="{% url 'about' %}">Our Information</a></li>
+                <li class="{% if request.path == '/service/' %}colorlib-active{% endif %}"><a
+                        href="{% url 'service' %}">Our services</a></li>
+                <li class="{% if request.path == '/blog/' %}colorlib-active{% endif %}"><a
+                        href="{% url 'blog' %}">
+                        Magazine</a></li>
+                <li class="{% if request.path == '/contact/' %}colorlib-active{% endif %}"><a
+                        href="{% url 'contact' %}">Contact</a></li>
             </ul>
         </nav>
         <div class="colorlib-footer">
             <h3>Newsletter</h3>
             <div class="d-flex justify-content-center">
-                <form action="#" class="colorlib-subscribe-form">
-                    <div class="form-group d-flex">
+                <form  action="#" class="colorlib-subscribe-form">
+                    
+                    <div method="post" class="form-group d-flex">
+                        {% csrf_token %}
+                        {{ form.email }}
                         <div class="icon"><span class="icon-paper-plane"></span></div>
-                        <input type="text" class="form-control" placeholder="Enter Email Address">
+                        
                     </div>
                 </form>
             </div>
@@ -67,14 +75,11 @@
                 <div class="col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
                         <h2 class="ftco-heading-2">Recent Photos</h2>
+                        {% for i in collections %}
                         <ul class="list-unstyled photo">
-                            <li><a href="#" class="img" style="background-image: url(images/image_1.jpg);"></a></li>
-                            <li><a href="#" class="img" style="background-image: url(images/image_2.jpg);"></a></li>
-                            <li><a href="#" class="img" style="background-image: url(images/image_3.jpg);"></a></li>
-                            <li><a href="#" class="img" style="background-image: url(images/image_4.jpg);"></a></li>
-                            <li><a href="#" class="img" style="background-image: url(images/image_5.jpg);"></a></li>
-                            <li><a href="#" class="img" style="background-image: url(images/image_6.jpg);"></a></li>
+                            <li><a href="#" class="img" style="background-image: url({{ i.image.url }});"></a></li>
                         </ul>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="col-md">

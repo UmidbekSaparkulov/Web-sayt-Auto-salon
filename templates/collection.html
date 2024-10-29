@@ -16,6 +16,7 @@
         <section class="ftco-section-3">
             <div class="photograhy">
                 <div class="row">
+
                     {% for i in collections %}
                     <div class="col-md-4 ftco-animate">
                         <a href="{{ i.image.url }}"
@@ -24,11 +25,12 @@
                             <div class="overlay"></div>
                             <div class="text ml-4 mb-4">
                                 <h3>{{ i.title }}</h3>
-                                <span class="tag">Model</span>
+                                <span class="tag"></span>
                             </div>
                         </a>
                     </div>
                     {% endfor %}
+                    
                 </div>
             </div>
         </section>
